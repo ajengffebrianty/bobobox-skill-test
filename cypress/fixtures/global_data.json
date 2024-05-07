@@ -1,5 +1,6 @@
 {
   "username": "standard_user",
+  "invalid_user": "standard_User",
   "locked_user": "locked_out_user",
   "password": "secret_sauce",
   "first_name": "QA",
