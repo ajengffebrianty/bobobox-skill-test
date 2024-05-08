@@ -19,6 +19,10 @@ export class ProductPage {
         return cy.get('[data-test="product-sort-container"]')
     }
 
+    getProductName() {
+        return cy.get('.inventory_item_name')
+    }
+
     getDetailProductName() {
         return cy.get('.inventory_details_name')
     }

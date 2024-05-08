@@ -48,10 +48,14 @@ describe('Product module test cases', () => {
     })
   })
   it('See Detail product', function () {
-    product.clickDetailProduct(1)
-    product.getDetailProductDescription().should('be.visible')
-    product.getDetailProductName().should('be.visible')
-    product.clickBacktoProduct()
+
+    product.getProductName().eq(1).invoke('text').then(productName => {
+      product.clickDetailProduct(1)
+      product.getDetailProductDescription().should('be.visible')
+      product.getDetailProductName().should('have.text', productName)
+      product.clickBacktoProduct()
+    })
+
   })
   it('Add  product to cart through detail product page', function () {
     product.getButtonAddList().each(($el, index, list) => {

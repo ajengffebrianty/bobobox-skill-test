@@ -44,11 +44,15 @@ Cypress.Commands.add('login', (username, password) => {
     })
   })
 
-  Cypress.Commands.add('resetState', () => {
-    cy.get("#react-burger-menu-btn").click()
-    cy.get("#reset_sidebar_link").click()
-    // cy.get('.shopping_cart_link').click()
-    // cy.get("#continue-shopping").click()
+  Cypress.Commands.add('addProduct', () => {
+    cy.get(".pricebar").each(($el, index, list) => {
+        let btn_text = $el.find('button').text()
+        if (btn_text.includes('Add to cart')) {
+            cy.get('.inventory_item_name ').eq(index).click()
+            cy.get('#add-to-cart').click()
+          return false
+        }
+      })
   })
   
 //
