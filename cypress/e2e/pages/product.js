@@ -78,13 +78,6 @@ export class ProductPage {
         cy.get('#back-to-products').click()
     }
 
-    clickAddtoCartDetail() {
-        cy.get('#add-to-cart').click()
-    }
-
-    clickRemoveCartDetail() {
-        cy.get('#remove').click()
-    }
 
     clickAddtoCartList(index) {
         cy.contains('Add to cart').click()

@@ -62,7 +62,7 @@ describe('Product module test cases', () => {
       let btn_text = $el.find('button').text()
       if (btn_text.includes('Add to cart')) {
         product.clickDetailProduct(index)
-        product.clickAddtoCartDetail()
+        product.getButtonAddDetail().click()
         product.getButtonRemoveDetail().should('be.visible')
         product.getBadgeCart().invoke('text').then((badge) => {
           const cartbadge = Number(badge)
@@ -79,7 +79,7 @@ describe('Product module test cases', () => {
         product.clickDetailProduct(index)
         product.getBadgeCart().invoke('text').then((badge) => {
           const cartbadge = Number(badge)
-          product.clickRemoveCartDetail()
+          product.getButtonRemoveDetail().click()
           product.getBadgeCart().then($parent => {
             const badge = $parent.find(product.getBadgeNumber())
             if (badge.length > 0) {
