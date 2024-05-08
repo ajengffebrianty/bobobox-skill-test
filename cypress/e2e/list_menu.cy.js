@@ -23,14 +23,15 @@ describe('Menu list test cases', () => {
     listMenu.getAllItemLink().click()
     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
   })
+
   it('Access Reset app state menu', function () {
     product.getListMenu().click()
     cy.addProduct()
     cy.get(product.getBadgeNumber()).should('exist')
     listMenu.getReset().click()
     cy.get(product.getBadgeNumber()).should('not.exist')
-
   })
+
   it('Logout menu', function () {
     product.getListMenu().click()
     listMenu.getLogoutLink().click()
