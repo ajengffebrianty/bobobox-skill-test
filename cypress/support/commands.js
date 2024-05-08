@@ -48,8 +48,7 @@ Cypress.Commands.add('login', (username, password) => {
     cy.get(".pricebar").each(($el, index, list) => {
         let btn_text = $el.find('button').text()
         if (btn_text.includes('Add to cart')) {
-            cy.get('.inventory_item_name ').eq(index).click()
-            cy.get('#add-to-cart').click()
+            cy.contains('Add to cart').click()
           return false
         }
       })

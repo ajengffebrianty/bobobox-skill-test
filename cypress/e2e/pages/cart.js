@@ -19,6 +19,12 @@ export class CartPage {
         return cy.get('.cart_item_label')
     }
 
+    getRemoveButton() {
+        return cy.get('[class="btn btn_secondary btn_small cart_button"]')
+    }
+
+
+
 
 
 
