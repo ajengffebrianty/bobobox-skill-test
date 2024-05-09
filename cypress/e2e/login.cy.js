@@ -4,34 +4,43 @@ import { ProductPage } from "./pages/product"
 const login = new LoginPage()
 const product = new ProductPage()
 
-beforeEach(()=> {
-  cy.visit('/')
-  cy.fixture('global_data.json').as('data')
+beforeEach(() => {
+  cy.fixture('global_data.json').as('data').then(() => {
+    cy.visit('/')
+  })
 })
 
 
-describe('Login module test cases', () => {
- 
-  it('Login to saucedemo without fill the field', function() {
+describe('Login Module Test Cases', () => {
+  it('Login to saucedemo without fill the field', function () {
     login.enterUsername(`{backspace}`)
     login.enterPassword(`{backspace}`)
     login.clickLogin()
     login.getErrorMessage().should('include.text', login.required_message)
   })
-  it('Login to saucedemo using wrong username', function() {
+
+  it('Login to Saucedemo Using Wrong Username', function () {
     login.enterUsername(this.data.invalid_user)
     login.enterPassword(this.data.password)
     login.clickLogin()
     login.getErrorMessage().should('include.text', login.wronguser_message)
   })
-  it ('Login to saucedemo using locked out user', function() {
-    login.enterUsername(this.data.locked_user)
+
+  it('Login to Saucedemo Using Wrong Password', function () {
+    login.enterUsername(this.data.username)
+    login.enterPassword(this.data.invalid_password)
+    login.clickLogin()
+    login.getErrorMessage().should('include.text', login.wronguser_message)
+  })
+
+  it('Login to Saucedemo Using Locked Out User', function () {
+    login.enterUsername(this.data.lock_user)
     login.enterPassword(this.data.password)
     login.clickLogin()
     login.getErrorMessage().should('include.text', login.locked_message)
   })
-
-  it('Login to saucedemo', function () {
+  
+  it('Login to Saucedemo', function () {
     login.enterUsername(this.data.username)
     login.enterPassword(this.data.password)
     login.clickLogin()
@@ -39,6 +48,5 @@ describe('Login module test cases', () => {
     product.getFilterProduct().should('be.visible')
     product.getListMenu().should('be.visible')
     product.getShoppingCart().should('be.visible')
-    
   })
 })

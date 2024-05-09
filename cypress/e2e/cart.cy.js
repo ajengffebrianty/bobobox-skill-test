@@ -10,22 +10,22 @@ const overview = new OverviewPage()
 const complete = new CompletePage()
 
 beforeEach(() => {
-  cy.fixture('global_data.json').as('data')
   cy.fixture('global_data').then((user) => {
     cy.login(user.username, user.password);
+    cy.fixture('global_data.json').as('data')
   });
 })
 
 
-describe('Cart module test cases', () => {
+describe('Cart Module Test Cases', () => {
 
-  it('Access cart page', function () {
+  it('Access Cart Page', function () {
     product.clickCart()
     cart.getTitlePage().should('have.text', cart.title_text)
     cart.getBtnCheckout().should('be.visible')
     cart.getBtnContinueShop().should('be.visible')
   })
-  it('See Detail product through cart', function () {
+  it('See detail Product through Cart', function () {
     cy.addProduct()
     product.clickCart()
     cart.getProductName().eq(0).invoke('text').then(productName => {
@@ -33,7 +33,7 @@ describe('Cart module test cases', () => {
       product.getDetailProductName().should('have.text', productName)
     })
   })
-  it('Remove product through cart', function () {
+  it('Remove Product through Cart', function () {
     cy.addProduct()
     product.clickCart()
     cart.getProductName().eq(0).invoke('text').then(productName => {
@@ -42,7 +42,7 @@ describe('Cart module test cases', () => {
     })
   })
 
-  it('Remove one of product through cart list before checkout the product', function () {
+  it('Remove One of Product through Cart before Checkout the Product', function () {
     cy.addProduct()
     cy.addProduct()
     product.clickCart()
@@ -65,7 +65,7 @@ describe('Cart module test cases', () => {
     })
   })
 
-  it('Emptied product through cart list before checkout the product', function () {
+  it('Emptied Product through Cart before Checkout the Product', function () {
     cy.addProduct()
     product.clickCart()
     cart.getRemoveButton().each(($el, index, list) => {
@@ -76,11 +76,11 @@ describe('Cart module test cases', () => {
     product.getTitlePage().should('have.text', product.title_text)
   })
 
-  it('Checkout the product without fill the customer data', function () {
+  it('Checkout the Product without fill the Customer Data', function () {
     cy.addProduct()
     product.clickCart()
     let cartProduct
-    
+
     cart.getBtnCheckout().click()
     information.getTitlePage().should('include.text', information.title_text)
     information.enterFirstName(`{backspace}`)
@@ -101,7 +101,7 @@ describe('Cart module test cases', () => {
     cart.getTitlePage().should('include.text', cart.title_text)
   })
 
-  it('Checkout the product', function () {
+  it('Checkout the Product', function () {
     cy.addProduct()
     product.clickCart()
     let cartProduct

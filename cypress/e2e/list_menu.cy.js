@@ -10,21 +10,21 @@ beforeEach(() => {
 })
 
 
-describe('Menu list test cases', () => {
+describe('Access Menu Test Cases', () => {
 
-  it('Access About menu', function () {
+  it('Access Menu About', function () {
     product.getListMenu().click()
     listMenu.getAboutLink().should('have.attr','href', 'https://saucelabs.com/' )
   })
 
-  it('Access All items menu', function () {
+  it('Access Menu All Items', function () {
     product.getListMenu().click()
     listMenu.getReset().click()
     listMenu.getAllItemLink().click()
     cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
   })
 
-  it('Access Reset app state menu', function () {
+  it('Access Reset App State Menu', function () {
     product.getListMenu().click()
     cy.addProduct()
     cy.get(product.getBadgeNumber()).should('exist')
@@ -32,7 +32,7 @@ describe('Menu list test cases', () => {
     cy.get(product.getBadgeNumber()).should('not.exist')
   })
 
-  it('Logout menu', function () {
+  it('Logout Menu', function () {
     product.getListMenu().click()
     listMenu.getLogoutLink().click()
     cy.url().should('eq', 'https://www.saucedemo.com/')

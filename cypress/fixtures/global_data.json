@@ -1,8 +1,9 @@
 {
   "username": "standard_user",
   "invalid_user": "standard_User",
-  "locked_user": "locked_out_user",
+  "lock_user": "locked_out_user",
   "password": "secret_sauce",
+  "invalid_password": "secret_Sauce",
   "first_name": "QA",
   "last_name": "Testing",
   "postal_code": "12170"

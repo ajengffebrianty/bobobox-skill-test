@@ -8,9 +8,9 @@ beforeEach(() => {
 })
 
 
-describe('Product module test cases', () => {
+describe('Product Module Test Cases', () => {
 
-  it('Filter product', function () {
+  it('Sorting Product', function () {
     //sorting product Z to A
     cy.getListProduct().then(productList => {
       productList.sort((a, b) => b.product_name.localeCompare(a.product_name))
@@ -47,7 +47,7 @@ describe('Product module test cases', () => {
       })
     })
   })
-  it('See Detail product', function () {
+  it('See Detail Product', function () {
 
     product.getProductName().eq(1).invoke('text').then(productName => {
       product.clickDetailProduct(1)
@@ -57,7 +57,7 @@ describe('Product module test cases', () => {
     })
 
   })
-  it('Add  product to cart through detail product page', function () {
+  it('Add  Product to Cart through Detail Product Page', function () {
     product.getButtonAddList().each(($el, index, list) => {
       let btn_text = $el.find('button').text()
       if (btn_text.includes('Add to cart')) {
@@ -72,7 +72,7 @@ describe('Product module test cases', () => {
       }
     })
   })
-  it('Remove product from cart through detail product page', function () {
+  it('Remove Product from Cart through Detail Product Page', function () {
     product.getButtonAddList().each(($el, index, list) => {
       let btn_text = $el.find('button').text()
       if (btn_text.includes('Remove')) {
@@ -96,7 +96,7 @@ describe('Product module test cases', () => {
       }
     })
   })
-  it('Add 1 Product to cart through list', function () {
+  it('Add 1 Product to Cart through Product List', function () {
     product.getBadgeCart().invoke('text').then((badge) => {
       const cartbadge = Number(badge)
 
@@ -113,7 +113,7 @@ describe('Product module test cases', () => {
       })
     })
   })
-  it('Add all product to cart through list', function () {
+  it('Add All Product to Cart through Product List', function () {
 
     product.getBadgeCart().invoke('text').then((badge) => {
       const cartbadge = Number(badge)
@@ -131,7 +131,7 @@ describe('Product module test cases', () => {
       })
     })
   })
-  it('Remove all product from cart through product list', function () {
+  it('Remove All product from Cart through Product List', function () {
     product.getBadgeCart().invoke('text').then((badge) => {
       const cartbadge = Number(badge)
       let totalAdd = 0
