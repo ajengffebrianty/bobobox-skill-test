@@ -14,4 +14,8 @@ By default, Cypress generates a report for each end-to-end file (cy.js), usually
 3. Navigate to the project directory in your terminal
 4. Run the command specified in the package.json file using npm run test.
 
+# Run testing using Cucumber
+1. Go to config.js file
+2. uncomment the specPattern, to execute the .feature file
+
 
