@@ -6,6 +6,7 @@ const currentDateTime = moment().format('YYYY-MM-DD_HH:mm:ss');
 module.exports = defineConfig({
   e2e: {
     chromeWebSecurity: false,
+    projectId: "ponkd3",
     'baseUrl': 'https://saucedemo.com/',
     watchForFileChanges: false,
     reporter: 'mochawesome',
