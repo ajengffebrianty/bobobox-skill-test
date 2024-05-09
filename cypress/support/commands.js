@@ -19,41 +19,51 @@ Cypress.Commands.add('login', (username, password) => {
     cy.get('#user-name').type(username);
     cy.get('#password').type(password);
     cy.get('#login-button').click()
-  });
+});
 
-  Cypress.Commands.add('getListProduct', () => {
+Cypress.Commands.add('getListProduct', () => {
     const product = [];
     var product_name
     var product_price
     cy.get('.inventory_item_description').each(($el, index, list) => {
-      cy.get('.inventory_item_name').eq(index).invoke('text').then((text) => {
-        product_name = text.trim()
-      }).then(() => {
-        cy.get('.inventory_item_price').eq(index).invoke('text').then((text) => {
-          product_price = Number(text.trim().substring(1))
+        cy.get('.inventory_item_name').eq(index).invoke('text').then((text) => {
+            product_name = text.trim()
         }).then(() => {
-          const object = {
-            product_name: product_name,
-            product_price: product_price,
-          };
-          product.push(object);
+            cy.get('.inventory_item_price').eq(index).invoke('text').then((text) => {
+                product_price = Number(text.trim().substring(1))
+            }).then(() => {
+                const object = {
+                    product_name: product_name,
+                    product_price: product_price,
+                };
+                product.push(object);
+            })
         })
-      })
-    }).then(()=>{
+    }).then(() => {
         return product
     })
-  })
+})
 
-  Cypress.Commands.add('addProduct', () => {
+Cypress.Commands.add('addProduct', () => {
     cy.get(".pricebar").each(($el, index, list) => {
         let btn_text = $el.find('button').text()
         if (btn_text.includes('Add to cart')) {
             cy.contains('Add to cart').click()
-          return false
+            return false
         }
-      })
-  })
-  
+    })
+})
+
+import addContext from "mochawesome/addContext";
+
+Cypress.on("test:after:run", (test, runnable) => {
+    if (test.state === "failed") {
+        const screenshot = `assets/${Cypress.spec.name}/${runnable.parent.title.replace(':', '')} -- ${test.title} (failed).png`;
+        const video = `assets/${Cypress.spec.name}.mp4`;
+        addContext({ test }, screenshot);
+        addContext({ test }, video);
+    }
+});
 //
 //
 // -- This is a child command --
