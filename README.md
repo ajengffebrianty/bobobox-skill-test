@@ -17,5 +17,6 @@ By default, Cypress generates a report for each end-to-end file (cy.js), usually
 # Run testing using Cucumber
 1. Go to config.js file
 2. uncomment the specPattern, to execute the .feature file
+3. Execute the test cases, use npx cypress run
 
 
