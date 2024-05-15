@@ -13,6 +13,7 @@ By default, Cypress generates a report for each end-to-end file (cy.js), usually
 2. Install mochawesome-merge using npm install mochawesome-merge
 3. Navigate to the project directory in your terminal
 4. Run the command specified in the package.json file using npm run test.
+5. Report will generated in folder /projectDirectory/cypress/report/date_hh:mm:ss/report.html, copy the path of html file then open in browser
 
 # Run testing using Cucumber
 1. Go to config.js file
