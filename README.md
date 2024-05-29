@@ -1,5 +1,4 @@
-# bobobox-skill-test
-Bobobox Skill Test QA Engineer
+# Cypress sauce demo
 
 # How to Run the Test
 1. Install cypress using npm install cypress
