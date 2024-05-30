@@ -1,7 +1,7 @@
 {
-  "name": "bobobox-skill-test",
+  "name": "Cypress Saucedemo",
   "version": "1.0.0",
-  "description": "Bobobox Skill Test QA Engineer",
+  "description": "Testing saucedemo website use cypress",
   "main": "index.js",
   "scripts": {
     "test": "npx cypress run || (npm run posttest && exit 1)",
