@@ -2,19 +2,8 @@ const { defineConfig } = require("cypress");
 const moment = require('moment');
 const currentDateTime = moment().format('YYYY-MM-DD_HH:mm:ss');
 
-const {
-  addCucumberPreprocessorPlugin,
-} = require("@badeball/cypress-cucumber-preprocessor");
-const {
-  preprocessor,
-} = require("@badeball/cypress-cucumber-preprocessor/browserify");
 
-async function setupNodeEvents(on, config) {
-  await addCucumberPreprocessorPlugin(on, config);
 
-  on("file:preprocessor", preprocessor(config));
-  return config;
-}
 module.exports = defineConfig({
   e2e: {
     chromeWebSecurity: false,
@@ -33,6 +22,8 @@ module.exports = defineConfig({
     },
     //Uncomment the specPatter to run BDD
     // specPattern: 'cypress/e2e/BDD/*.feature',
-    setupNodeEvents,
+    setupNodeEvents(on, config) {
+
+    }
   },
 });
